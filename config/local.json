@@ -1,4 +1,16 @@
 {
+  "pm-20": [
+    {
+      "credentials": {
+        "username": "thabang@chankura.com",
+        "password": "maexx3935C",
+        "url": "https://eu-gb.ml.cloud.ibm.com"
+      }
+    }
+  ]
+}
+
+{
   "apikey": "8Tl4nluzZflfAxfMjlfq5GKysI8BtTEOlyQSxpVc0HF_",
   "iam_apikey_description": "Auto-generated for key 0a2e58a7-a0d9-48a4-849c-b504a59a9c2a",
   "iam_apikey_name": "modelcredentials",
