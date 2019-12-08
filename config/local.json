@@ -1,0 +1,9 @@
+{
+  "apikey": "8Tl4nluzZflfAxfMjlfq5GKysI8BtTEOlyQSxpVc0HF_",
+  "iam_apikey_description": "Auto-generated for key 0a2e58a7-a0d9-48a4-849c-b504a59a9c2a",
+  "iam_apikey_name": "modelcredentials",
+  "iam_role_crn": "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+  "iam_serviceid_crn": "crn:v1:bluemix:public:iam-identity::a/1dbd7f6b63bc460d86c69130194b57bc::serviceid:ServiceId-20fbea2f-9416-4592-9dcf-8793369630bf",
+  "instance_id": "93e2ed0e-9c6f-4154-8855-1923c160d5c7",
+  "url": "https://eu-gb.ml.cloud.ibm.com"
+}
