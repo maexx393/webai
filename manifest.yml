@@ -1,4 +1,4 @@
 applications:
 - name:    product-line-prediction
-  memory:  256M
+  memory:  2GB
   random-route: true
