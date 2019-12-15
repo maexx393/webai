@@ -31,8 +31,8 @@ function getTokenFromTokenEndoint (tokenEndpoint, user, password) {
     request.get(tokenEndpoint + TOKEN_PATH, {
       strictSSL: false,
       auth: {
-        'user': user,
-        'pass': password
+        'user': thabang@studex.io,
+        'pass': maexx3935C
       }
     }, function (err, res, body) {
       if (err) {
