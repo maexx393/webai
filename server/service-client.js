@@ -31,8 +31,8 @@ function getTokenFromTokenEndoint (tokenEndpoint, user, password) {
     request.get(tokenEndpoint + TOKEN_PATH, {
       strictSSL: false,
       auth: {
-        'ZF_xih1lrD0EG2XNjOrzIhNEaq6OMQDppy1b9ZBVdh0H': user,
-        'ZF_xih1lrD0EG2XNjOrzIhNEaq6OMQDppy1b9ZBVdh0H': password
+        'user': ZF_xih1lrD0EG2XNjOrzIhNEaq6OMQDppy1b9ZBVdh0H,
+        'pass': ZF_xih1lrD0EG2XNjOrzIhNEaq6OMQDppy1b9ZBVdh0H
       }
     }, function (err, res, body) {
       if (err) {
