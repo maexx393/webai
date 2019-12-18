@@ -33,8 +33,8 @@
 	request.get(tokenEndpoint + TOKEN_PATH, {
 	strictSSL: false,
 	auth: {
-	'user': apikey,
-	'pass': ZF_xih1lrD0EG2XNjOrzIhNEaq6OMQDppy1b9ZBVdh0H
+	'apikey': user,
+	'ZF_xih1lrD0EG2XNjOrzIhNEaq6OMQDppy1b9ZBVdh0H': password
 	}
 	}, function (err, res, body) {
 	if (err) {
