@@ -34,7 +34,7 @@
 	strictSSL: false,
 	auth: {
 	'user': apikey,
-	'password': o0LE3YYJsoQqWBgi2dEqDzoyRPPmtXsCUIBLi1nVtQpS
+	'pass': o0LE3YYJsoQqWBgi2dEqDzoyRPPmtXsCUIBLi1nVtQpS
 	}
 	}, function (err, res, body) {
 	if (err) {
