@@ -2,8 +2,8 @@
   "pm-20": [
     {
       "credentials": {
-        "username": "DeploymentCreds",
-        "password": "o0LE3YYJsoQqWBgi2dEqDzoyRPPmtXsCUIBLi1nVtQpS",
+        "username": "https://eu-gb.ml.cloud.ibm.com",
+        "password": "WsJa4Bf4yYAv57dIrzk7iXOVs7e8B4rcS8Ocgxu07q9b",
         "url": "https://eu-gb.ml.cloud.ibm.com"
       }
     }
