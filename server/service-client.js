@@ -28,8 +28,8 @@ function getTokenFromTokenEndoint (tokenEndpoint, user, password) {
     request.get(tokenEndpoint + TOKEN_PATH, {
       strictSSL: false,
       auth: {
-        'user': 'WatsonMachineLearning',
-        'pass': 'WsJa4Bf4yYAv57dIrzk7iXOVs7e8B4rcS8Ocgxu07q9b'
+        'user': 'DeploymentCreds',
+        'pass': 'o0LE3YYJsoQqWBgi2dEqDzoyRPPmtXsCUIBLi1nVtQpS'
       }
     }, function (err, res, body) {
       if (err) {
