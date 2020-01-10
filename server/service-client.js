@@ -29,7 +29,7 @@ function getTokenFromTokenEndoint (tokenEndpoint, user, password) {
       strictSSL: false,
       auth: {
         user: 'ModelCredentials',
-        pass: 'ZF_xih1lrD0EG2XNjOrzIhNEaq6OMQDppy1b9ZBVdh0H'
+        password: 'ZF_xih1lrD0EG2XNjOrzIhNEaq6OMQDppy1b9ZBVdh0H'
       }
     }, function (err, res, body) {
       if (err) {
