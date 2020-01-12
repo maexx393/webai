@@ -28,8 +28,8 @@ function getTokenFromTokenEndoint (tokenEndpoint, user, password) {
     request.get(tokenEndpoint + TOKEN_PATH, {
       strictSSL: false,
       auth: {
-        'user': user,
-        'pass': password
+        'user': 'qwerty',
+        'pass': 'AriLvg_-EiRtF2-8Tm-qbwfeVQ15aNWuTkcnU27rvO8R'
       }
     }, function (err, res, body) {
       if (err) {
