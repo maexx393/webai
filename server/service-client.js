@@ -22,35 +22,51 @@ const TOKEN_PATH = '/v3/identity/token';
 const modelInfo = require('../config/model.json');
 const schema = modelInfo['model-schema'].map(obj => obj.name);
 
-function getTokenFromTokenEndoint (tokenEndpoint, user, password) {
-  debug('getTokenFromTokenEndoint', tokenEndpoint);
-  return new Promise((resolve, reject) => {
-    request.get(tokenEndpoint + TOKEN_PATH, {
-      strictSSL: false,
-      auth: {
-        "pass": "ZF_xih1lrD0EG2XNjOrzIhNEaq6OMQDppy1b9ZBVdh0H",
-        "user": "701c17b8-3637-4fb5-a35f-97e8976704bd"
-      }
-    }, function (err, res, body) {
-      if (err) {
-        reject(err);
-      }
-      debug('got response:', body);
-      if (!res || !res.statusCode) {
-        reject(new Error('Token Endpoint failure'));
-      } else {
-        switch (res.statusCode) {
-          case 200:
-            resolve(JSON.parse(res.body).token);
-            break;
-          default:
-            reject(new Error(`Token Endpoint returned ${res.statusCode}.
-              Make sure the user is privileged to perform REST API calls.`));
-        }
-      }
-    });
-  });
+
+var wml_credentials = {
+    "apikey": "",
+    "instance_id": ""
+};
+
+
+
+function getAuthToken( apikey )
+{
+    // Use the IBM Cloud REST API to get an access token
+    //
+    var IBM_Cloud_IAM_uid = "qwerty";
+    var IBM_Cloud_IAM_pwd = "AriLvg_-EiRtF2-8Tm-qbwfeVQ15aNWuTkcnU27rvO8R";
+    
+    return new Promise( function( resolve, reject )
+    {
+        var btoa = require( "btoa" );
+        var options = { url     : "https://iam.bluemix.net/oidc/token",
+                        headers : { "Content-Type"  : "application/x-www-form-urlencoded",
+                                    "Authorization" : "Basic " + btoa( IBM_Cloud_IAM_uid + ":" + IBM_Cloud_IAM_pwd ) },
+                        body    : "apikey=" + apikey + "&grant_type=urn:ibm:params:oauth:grant-type:apikey" };
+        var request = require( 'request' );
+        request.post( options, function( error, response, body )
+        {
+            if( error || ( 200 != response.statusCode ) )
+            {
+                console.log( "getAuthToken:\n" + JSON.parse( body )["errorCode"] + "\n" + JSON.parse( body )["errorMessage"] + "\n" + JSON.parse( body )["errorDetails"] )
+                reject( "Status code: " + response.statusCode + "  Error: " + error );
+            }
+            else
+            {
+                try
+                {
+                    resolve( JSON.parse( body )["access_token"] );
+                }
+                catch( e )
+                {
+                    reject( 'JSON.parse failed.' );
+                }
+            }
+        } );
+    } );    
 }
+
 
 const ServiceClient = module.exports = function (service) {
   if (service) {
@@ -65,11 +81,11 @@ ServiceClient.prototype = {
   },
 
   performRequest: function (options, callback) {
-    getTokenFromTokenEndoint(
+    /*getTokenFromTokenEndoint(
       this.credentials.url,
       this.credentials.username,
-      this.credentials.password
-    )
+      this.credentials.password*/
+     getAuthToken("ZF_xih1lrD0EG2XNjOrzIhNEaq6OMQDppy1b9ZBVdh0H")
     .then((token) => {
       options.headers = {Authorization: 'Bearer ' + token};
       options.uri = options.uri.startsWith('http') ? options.uri : this.credentials.url + options.uri;
