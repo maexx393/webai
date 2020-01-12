@@ -97,7 +97,8 @@ ServiceClient.prototype = {
       request(options, callback);
     })
     .catch((err) => {
-      callback && callback(err);
+      //callback && callback(err);
+        console.log(err);
     });
   },
 
