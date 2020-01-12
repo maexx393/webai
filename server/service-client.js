@@ -87,7 +87,11 @@ ServiceClient.prototype = {
       this.credentials.password*/
      getAuthToken("ZF_xih1lrD0EG2XNjOrzIhNEaq6OMQDppy1b9ZBVdh0H")
     .then((token) => {
-      options.headers = {Authorization: 'Bearer ' + token};
+      options.headers = {
+         Authorization: 'Bearer ' + token,
+         "Content-type": 'application/json',
+         "ML-Instance-ID" : "701c17b8-3637-4fb5-a35f-97e8976704bd"
+      };
       options.uri = options.uri.startsWith('http') ? options.uri : this.credentials.url + options.uri;
       debug(`url: ${options.uri}`);
       request(options, callback);
