@@ -99,6 +99,7 @@ ServiceClient.prototype = {
     .catch((err) => {
       //callback && callback(err);
         console.log(err);
+        callback(err);
     });
   },
 
