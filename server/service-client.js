@@ -38,32 +38,21 @@ function getAuthToken( apikey )
     var IBM_Cloud_IAM_pwd = "AriLvg_-EiRtF2-8Tm-qbwfeVQ15aNWuTkcnU27rvO8R";
     
     return new Promise( function( resolve, reject )
-    {
-        var btoa = require( "btoa" );
-        var options = { url     : "https://iam.bluemix.net/oidc/token",
-                        headers : { "Content-Type"  : "application/x-www-form-urlencoded",
-                                    "Authorization" : "Basic " + btoa( IBM_Cloud_IAM_uid + ":" + IBM_Cloud_IAM_pwd ) },
-                        body    : "apikey=" + apikey + "&grant_type=urn:ibm:params:oauth:grant-type:apikey" };
-        var request = require( 'request' );
-        request.post( options, function( error, response, body )
-        {
-            if( error || ( 200 != response.statusCode ) )
-            {
-                console.log( "getAuthToken:\n" + JSON.parse( body )["errorCode"] + "\n" + JSON.parse( body )["errorMessage"] + "\n" + JSON.parse( body )["errorDetails"] )
-                reject( "Status code: " + response.statusCode + "  Error: " + error );
-            }
-            else
-            {
-                try
-                {
-                    resolve( JSON.parse( body )["access_token"] );
-                }
-                catch( e )
-                {
-                    reject( 'JSON.parse failed.' );
-                }
-            }
-        } );
+var request = require("request");
+
+var options = { method: 'POST', url: 'https://eu-gb.ml.cloud.ibm.com/v4/deployments/d712faf3-304d-4ebf-a087-90d6fb3c5cf8/predictions', 
+                       headers: { 'Postman-Token': 'bdf71fd9-6123-4667-8521-910fa10837d4', 'cache-control': 'no-cache', 'ML-Instance-ID': '701c17b8-3637-4fb5-a35f-97e8976704bd', 
+                       Authorization: 'Bearer eyJraWQiOiIyMDE5MDcyNCIsImFsZyI6IlJTMjU2In0.eyJpYW1faWQiOiJpYW0tU2VydmljZUlkLWY0MGRiZmY3LTY4OGEtNDIyZS04YmJjLWQwY2EwNWJmNGU3NyIsImlkIjoiaWFtLVNlcnZpY2VJZC1mNDBkYmZmNy02ODhhLTQyMmUtOGJiYy1kMGNhMDViZjRlNzciLCJyZWFsbWlkIjoiaWFtIiwiaWRlbnRpZmllciI6IlNlcnZpY2VJZC1mNDBkYmZmNy02ODhhLTQyMmUtOGJiYy1kMGNhMDViZjRlNzciLCJzdWIiOiJTZXJ2aWNlSWQtZjQwZGJmZjctNjg4YS00MjJlLThiYmMtZDBjYTA1YmY0ZTc3Iiwic3ViX3R5cGUiOiJTZXJ2aWNlSWQiLCJhY2NvdW50Ijp7InZhbGlkIjp0cnVlLCJic3MiOiI5NDIzYzFkZDcwOGY0MjhhYjAzZmU1Mzc2MjZkYjIwNSJ9LCJpYXQiOjE1Nzg5NDI4MzQsImV4cCI6MTU3ODk0NjQzNCwiaXNzIjoiaHR0cHM6Ly9pYW0uY2xvdWQuaWJtLmNvbS9pZGVudGl0eSIsImdyYW50X3R5cGUiOiJ1cm46aWJtOnBhcmFtczpvYXV0aDpncmFudC10eXBlOmFwaWtleSIsInNjb3BlIjoiaWJtIG9wZW5pZCIsImNsaWVudF9pZCI6ImRlZmF1bHQiLCJhY3IiOjEsImFtciI6WyJwd2QiXX0.FIlFGtHQbeBzQm7t1KRezsnWCh7IE41VNhySGrmpLlkye_Eydj9bMgDAh98S4kbQGKtW5NjZQyN3REHjoVDA2gcviaNdACrq2mC89AiQV3x-u-1FdBF1xJ73v3Ko4JJayZNkz37SomSBcYaiOkSnEkFT5hbSnnHcz1qEwQLhhqlIw-wZo43-1Pkwz5MvH4aSyFc2N5RWO-RJBXMDgLPajHvPYfqj-OqPu4cQWJyIOdclKXEn4WdonRrdrPVkBXXoNr90iAin84h3FErNC3m2_FvFneLiGlXHzex-z65Hl30261B-ZqClKCo-iTNFGSzfHlxDaIinV3VBckGCOYeSWQ', 
+                       Accept: 'application/json', 'Content-Type': 'application/json' }, 
+                       body: { 
+                       input_data: [ { 
+                       fields: [ 'GENDER', 'AGE', 'MARITAL_STATUS', 'PROFESSION', 'PRODUCT_LINE', 'PURCHASE_AMOUNT' ], 
+                       values: [ [ 'M', 22, 'Married', 'Student', 'CAMPING EQUIPMENT', 2000 ] ] } ] }, 
+                       json: true };
+
+request(options, function (error, response, body) { if (error) throw new Error(error);
+
+console.log(body); });
     } );    
 }
 
